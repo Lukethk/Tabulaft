@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TABULAFT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;0,800;0,900;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="loader" class="loader">
+      <div class="spinner"></div>
+    </div>
+    <main class="figma-frame" aria-label="TABULAFT">
+      <header class="header">
+        <div class="logo logo-blue reveal">
+          <img src="assets/logo-blue-word.svg" alt="TABULAFT" />
+          <img src="assets/logo-blue-mark.svg" alt="" />
+        </div>
+        <nav class="nav reveal" aria-label="Navegacion principal">
+          <div class="nav-pill"></div>
+          <a class="active" href="#inicio">INICIO</a>
+          <a href="#explorar">EXPLORAR</a>
+          <a href="#publicar">PUBLICAR</a>
+        </nav>
+      </header>
+
+      <section class="hero reveal" id="inicio" aria-labelledby="hero-title">
+        <div class="figma-handles" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <img class="hero-bg" src="assets/hero-bg.svg" alt="" />
+        <div class="hero-card"></div>
+        <h1 id="hero-title">DESCUBRE LOS <br />MEJORES TRABAJOS<span style="display: block; margin-top: calc(5 * var(--scale));">DE DISEÑO</span></h1>
+        <p class="hero-text">
+          Explora el talento de los estudiantes de Diseño Gráfico. Proyectos
+          reales, creatividad sin limites
+        </p>
+        <a class="hero-button" href="#publicar">Publicar mi trabajo</a>
+        <img class="hero-character part-a" src="assets/hero-character-1.svg" alt="" />
+        <img class="hero-character part-b" src="assets/hero-character-2.svg" alt="" />
+        <img class="spark one" src="assets/hero-spark-1.svg" alt="" />
+        <img class="spark two" src="assets/hero-spark-2.svg" alt="" />
+      </section>
+
+      <section class="gallery" id="explorar" aria-labelledby="gallery-title">
+        <h2 class="reveal" id="gallery-title">¡Se la inspiración para otros!</h2>
+        <div class="bubble blue"><span></span></div>
+        <div class="bubble red"><span></span></div>
+        <img class="work work-1 reveal" style="--delay: 40ms" src="assets/work-1.png" alt="Trabajo destacado" />
+        <img class="work work-2 reveal" style="--delay: 90ms" src="assets/work-2.png" alt="Trabajo destacado" />
+        <img class="work work-3 reveal" style="--delay: 140ms" src="assets/work-3.png" alt="Trabajo destacado" />
+        <img class="work work-4 reveal" style="--delay: 190ms" src="assets/work-4.png" alt="Trabajo destacado" />
+        <img class="work work-5 reveal" style="--delay: 240ms" src="assets/work-5.png" alt="Trabajo destacado" />
+        <img class="work work-6 reveal" style="--delay: 290ms" src="assets/work-6.png" alt="Trabajo destacado" />
+        <div class="butterflies" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </div>
+      </section>
+
+      <section class="upload reveal" id="publicar" aria-labelledby="upload-title">
+        <img class="blue-band" src="assets/blue-band.svg" alt="" />
+        <img class="upload-card" src="assets/upload-card.svg" alt="" />
+        <h2 id="upload-title">Que tus trabajos <br />no se queden en el olvido.</h2>
+        <a class="upload-button" href="#">¡Subelo!</a>
+      </section>
+
+      <section class="about reveal" aria-labelledby="about-title">
+        <div class="about-container">
+          <img class="squiggle squiggle-right-top" src="assets/squiggle-right-top.svg" alt="" />
+          <img class="squiggle squiggle-left-bottom" src="assets/squiggle-left-bottom.svg" alt="" />
+          <img class="squiggle squiggle-left-loop" src="assets/squiggle-loop.svg" alt="" />
+          <img class="squiggle squiggle-right-middle" src="assets/squiggle-loop.svg" alt="" />
+          <img class="squiggle squiggle-right-loop" src="assets/squiggle-loop.svg" alt="" />
+        </div>
+        <h2 id="about-title">¿Qué es TABULAFT?</h2>
+        <p>
+          El propósito de TABULAFT es funcionar como un tablero digital para
+          mostrar aquellos trabajos de diseño de la carrera de Diseño Gráficos y
+          que sean de inspiración para otros o solo una apreciación visual.
+        </p>
+      </section>
+
+      <footer class="footer reveal">
+        <img class="footer-logo" src="assets/logo-white.svg" alt="TABULAFT" />
+        <p class="footer-copy">
+          Plataforma de exposición de proyectos de diseño gráfico · UNIVALLE
+        </p>
+        <nav class="footer-nav nav-one" aria-label="Explorar">
+          <strong>EXPLORAR</strong>
+          <a href="#explorar">Proyectos</a>
+          <a href="#explorar">Categorías</a>
+          <a href="#explorar">Destacados</a>
+        </nav>
+        <nav class="footer-nav nav-two" aria-label="Publicar">
+          <strong>EXPLORAR</strong>
+          <a href="#publicar">Proyectos</a>
+          <a href="#publicar">Categorías</a>
+          <a href="#publicar">Destacados</a>
+        </nav>
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
