@@ -511,18 +511,6 @@ h1 {
   text-align: center;
 }
 
-.about-container {
-  position: absolute;
-  left: calc(29 * var(--scale));
-  top: calc(1939 * var(--scale));
-  width: calc(1222 * var(--scale));
-  height: calc(800 * var(--scale));
-  background: var(--white);
-  border: calc(1 * var(--scale)) solid #e0e0e0;
-  border-radius: calc(30 * var(--scale));
-  overflow: hidden;
-}
-
 .squiggle {
   position: absolute;
   object-fit: contain;
@@ -530,40 +518,40 @@ h1 {
 }
 
 .squiggle-right-top {
-  left: calc(1039 * var(--scale));
-  top: calc(-31 * var(--scale));
+  left: calc(1068 * var(--scale));
+  top: calc(1908 * var(--scale));
   width: calc(430 * var(--scale));
   height: calc(700 * var(--scale));
   transform: rotate(39.19deg);
 }
 
 .squiggle-left-bottom {
-  left: calc(-263 * var(--scale));
-  top: calc(375 * var(--scale));
+  left: calc(-234 * var(--scale));
+  top: calc(2314 * var(--scale));
   width: calc(666 * var(--scale));
   height: calc(592 * var(--scale));
   transform: rotate(-160.27deg);
 }
 
 .squiggle-left-loop {
-  left: calc(-55 * var(--scale));
-  top: calc(-25 * var(--scale));
+  left: calc(-26 * var(--scale));
+  top: calc(1914 * var(--scale));
   width: calc(327 * var(--scale));
   height: calc(456 * var(--scale));
   transform: rotate(0.83deg);
 }
 
 .squiggle-right-middle {
-  left: calc(1111 * var(--scale));
-  top: calc(126 * var(--scale));
+  left: calc(1140 * var(--scale));
+  top: calc(2065 * var(--scale));
   width: calc(300 * var(--scale));
   height: calc(420 * var(--scale));
   transform: scaleX(-1) rotate(0.83deg);
 }
 
 .squiggle-right-loop {
-  left: calc(1021 * var(--scale));
-  top: calc(513 * var(--scale));
+  left: calc(1050 * var(--scale));
+  top: calc(2452 * var(--scale));
   width: calc(327 * var(--scale));
   height: calc(456 * var(--scale));
   transform: rotate(0.83deg);
