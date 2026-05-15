@@ -168,37 +168,8 @@ a {
   background: var(--blue);
 }
 
-.figma-handles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-}
-
-.figma-handles i {
-  position: absolute;
-  width: calc(12 * var(--scale));
-  height: calc(12 * var(--scale));
-  background: var(--white);
-  border: calc(1 * var(--scale)) solid #18A0FB;
-  transform: translate(-50%, -50%);
-}
-
-.figma-handles i:nth-child(1) { left: 0; top: 0; }
-.figma-handles i:nth-child(2) { left: 50%; top: 0; }
-.figma-handles i:nth-child(3) { left: 100%; top: 0; }
-.figma-handles i:nth-child(4) { left: 100%; top: 50%; }
-.figma-handles i:nth-child(5) { left: 100%; top: 100%; }
-.figma-handles i:nth-child(6) { left: 50%; top: 100%; }
-.figma-handles i:nth-child(7) { left: 0; top: 100%; }
-.figma-handles i:nth-child(8) { left: 0; top: 50%; }
-
 .hero-bg {
-  left: calc(-1 * var(--scale));
-  top: calc(-1 * var(--scale));
-  width: calc(1213 * var(--scale));
-  height: calc(527 * var(--scale));
-  object-fit: contain;
+  display: none;
 }
 
 .hero-card {
@@ -310,12 +281,14 @@ h1 {
   width: calc(524 * var(--scale));
   font-size: calc(36 * var(--scale));
   line-height: 1.2;
+  z-index: 4;
 }
 
 .bubble {
   width: calc(81 * var(--scale));
   height: calc(55 * var(--scale));
   border-radius: calc(24 * var(--scale)) calc(24 * var(--scale)) calc(24 * var(--scale)) calc(8 * var(--scale));
+  z-index: 3;
 }
 
 .bubble::before {
@@ -354,6 +327,7 @@ h1 {
   object-fit: cover;
   transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0.4s ease;
   position: absolute;
+  z-index: 1;
 }
 
 .work:hover {
@@ -421,6 +395,7 @@ h1 {
   top: calc(958 * var(--scale));
   width: calc(80 * var(--scale));
   height: calc(190 * var(--scale));
+  z-index: 3;
 }
 
 .butterflies i {
@@ -453,6 +428,7 @@ h1 {
   width: calc(1280 * var(--scale));
   height: calc(681 * var(--scale));
   transform: scaleY(-1);
+  z-index: 0;
 }
 
 .upload-card {
@@ -460,6 +436,7 @@ h1 {
   top: calc(1409 * var(--scale));
   width: calc(470 * var(--scale));
   height: calc(480 * var(--scale));
+  z-index: 1;
 }
 
 .upload h2 {
@@ -474,6 +451,7 @@ h1 {
   line-height: 0.9993;
   letter-spacing: calc(2.8 * var(--scale));
   text-align: center;
+  z-index: 3;
 }
 
 .upload-button {
@@ -492,6 +470,7 @@ h1 {
   line-height: 1;
   letter-spacing: calc(1.85 * var(--scale));
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 4;
 }
 
 .upload-button:hover {
@@ -505,6 +484,7 @@ h1 {
   width: calc(524 * var(--scale));
   font-size: calc(48 * var(--scale));
   line-height: 1.2;
+  z-index: 3;
 }
 
 .about p {
@@ -517,12 +497,14 @@ h1 {
   font-weight: 500;
   line-height: 1.2;
   text-align: center;
+  z-index: 3;
 }
 
 .squiggle {
   position: absolute;
   object-fit: contain;
   pointer-events: none;
+  z-index: 1;
 }
 
 .squiggle-right-top {
@@ -791,11 +773,7 @@ h1 {
   }
 
   .hero-bg {
-    left: -2px;
-    top: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    object-fit: cover;
+    display: none;
   }
 
   .hero-card {
@@ -876,6 +854,7 @@ h1 {
     width: calc(100% - (var(--mobile-pad) * 2));
     font-size: clamp(26px, 8vw, 34px);
     line-height: 1.08;
+    z-index: 4;
   }
 
   .bubble.blue {
@@ -893,9 +872,15 @@ h1 {
     height: 50px;
   }
 
+  .bubble,
+  .butterflies {
+    z-index: 3;
+  }
+
   .work {
     width: 170px;
     height: 170px;
+    z-index: 1;
   }
 
   .work-1 {
@@ -947,7 +932,7 @@ h1 {
   }
 
   .upload {
-    height: 740px;
+    height: 760px;
     overflow: hidden;
   }
 
@@ -957,89 +942,97 @@ h1 {
     width: 124%;
     height: 100%;
     object-fit: cover;
+    z-index: 0;
   }
 
   .upload-card {
-    left: 8%;
-    top: 105px;
-    width: 52%;
+    left: 10%;
+    top: 96px;
+    width: 50%;
     height: auto;
+    z-index: 1;
   }
 
   .upload h2 {
     left: 8%;
-    top: 430px;
+    top: 400px;
     width: 84%;
-    font-size: clamp(34px, 10vw, 46px);
+    font-size: clamp(32px, 9.2vw, 42px);
     line-height: 1.08;
     letter-spacing: 1px;
+    z-index: 3;
   }
 
   .upload-button {
     left: 50%;
     top: 585px;
-    width: 190px;
-    height: 50px;
+    width: 184px;
+    height: 48px;
     border-radius: 30px;
-    font-size: 30px;
+    font-size: 27px;
     letter-spacing: 1px;
     transform: translateX(-50%);
+    z-index: 4;
   }
 
   .about {
-    height: 720px;
+    height: 650px;
     overflow: hidden;
+    z-index: 1;
   }
 
   .about h2 {
     left: var(--mobile-pad);
-    top: 250px;
+    top: 190px;
     width: calc(100% - (var(--mobile-pad) * 2));
     font-size: clamp(28px, 8vw, 38px);
+    z-index: 5;
   }
 
   .about p {
     left: var(--mobile-pad);
-    top: 322px;
+    top: 262px;
     width: calc(100% - (var(--mobile-pad) * 2));
     font-size: 17px;
     line-height: 1.2;
+    z-index: 5;
+  }
+
+  .squiggle {
+    z-index: 0;
+    opacity: 0.96;
   }
 
   .squiggle-left-loop {
-    left: -120px;
-    top: 4px;
-    width: 255px;
-    height: 360px;
+    left: -135px;
+    top: 0;
+    width: 235px;
+    height: 335px;
   }
 
   .squiggle-left-bottom {
     left: -140px;
-    top: 470px;
-    width: 360px;
-    height: 330px;
+    top: 475px;
+    width: 330px;
+    height: 305px;
   }
 
   .squiggle-right-top {
     left: auto;
-    right: -170px;
-    top: 20px;
-    width: 280px;
-    height: 460px;
+    right: -390px;
+    top: 80px;
+    width: 330px;
+    height: 520px;
   }
 
   .squiggle-right-middle {
-    left: auto;
-    right: -95px;
-    top: 390px;
-    width: 220px;
-    height: 310px;
+    display: none;
   }
 
   .squiggle-right-loop {
     left: auto;
-    right: -160px;
-    top: 540px;
+    right: -350px;
+    top: 450px;
     width: 250px;
     height: 350px;
   }
