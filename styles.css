@@ -204,6 +204,8 @@ a {
   height: calc(300 * var(--scale));
   border-radius: calc(22 * var(--scale));
   background: var(--white);
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
 }
 
 h1 {
@@ -276,6 +278,7 @@ h1 {
   width: calc(90 * var(--scale));
   height: calc(80 * var(--scale));
   object-fit: contain;
+  transition: transform 0.1s ease-out;
 }
 
 .spark.two {
@@ -285,6 +288,7 @@ h1 {
   height: calc(120.363 * var(--scale));
   object-fit: contain;
   transform: rotate(-41.23deg);
+  transition: transform 0.1s ease-out;
 }
 
 .gallery h2,

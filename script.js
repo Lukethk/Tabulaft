@@ -83,3 +83,37 @@ window.addEventListener('load', () => {
     }, 500);
   }
 });
+
+// Hero card 3D tilt animation
+const heroSection = document.querySelector('.hero');
+const heroCard = document.querySelector('.hero-card');
+const sparkOne = document.querySelector('.spark.one');
+const sparkTwo = document.querySelector('.spark.two');
+
+if (heroSection && heroCard) {
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    // Tilt the card
+    const rotateX = (y / rect.height) * -20;
+    const rotateY = (x / rect.width) * 20;
+    
+    heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    
+    // Move the sparks for parallax depth
+    if (sparkOne) {
+      sparkOne.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px)`;
+    }
+    if (sparkTwo) {
+      sparkTwo.style.transform = `translate(${x * -0.05}px, ${y * -0.05}px) rotate(-41.23deg)`;
+    }
+  });
+
+  heroSection.addEventListener('mouseleave', () => {
+    heroCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+    if (sparkOne) sparkOne.style.transform = `translate(0px, 0px)`;
+    if (sparkTwo) sparkTwo.style.transform = `translate(0px, 0px) rotate(-41.23deg)`;
+  });
+}
