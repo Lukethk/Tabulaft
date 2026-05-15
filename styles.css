@@ -181,12 +181,13 @@ a {
   background: var(--white);
   transition: transform 0.1s ease-out;
   transform-style: preserve-3d;
+  z-index: 1;
 }
 
 h1 {
   left: calc(90 * var(--scale));
   top: calc(110 * var(--scale));
-  width: calc(410 * var(--scale));
+  width: calc(430 * var(--scale));
   margin: 0;
   color: var(--blue);
   font-family: Impact, sans-serif;
@@ -194,6 +195,8 @@ h1 {
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: calc(1 * var(--scale));
+  overflow: visible;
+  z-index: 5;
 }
 
 .hero-text {
@@ -205,6 +208,8 @@ h1 {
   font-size: calc(16 * var(--scale));
   font-weight: 400;
   line-height: 1.2;
+  overflow: visible;
+  z-index: 5;
 }
 
 .hero-button {
@@ -220,6 +225,7 @@ h1 {
   font-size: calc(16 * var(--scale));
   font-weight: 700;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 5;
 }
 
 .hero-button:hover {
@@ -229,6 +235,7 @@ h1 {
 
 .hero-character {
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-character.part-a {
@@ -254,6 +261,7 @@ h1 {
   height: calc(80 * var(--scale));
   object-fit: contain;
   transition: transform 0.1s ease-out;
+  z-index: 4;
 }
 
 .spark.two {
@@ -264,6 +272,7 @@ h1 {
   object-fit: contain;
   transform: rotate(-41.23deg);
   transition: transform 0.1s ease-out;
+  z-index: 4;
 }
 
 .gallery h2,
@@ -294,14 +303,14 @@ h1 {
 .bubble::before {
   content: "";
   position: absolute;
-  left: calc(23 * var(--scale));
-  top: calc(14 * var(--scale));
-  width: calc(34 * var(--scale));
-  height: calc(30 * var(--scale));
+  left: 50%;
+  top: 50%;
+  width: calc(46 * var(--scale));
+  height: calc(40 * var(--scale));
   background: var(--white);
   -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center / contain;
   mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center / contain;
-  transform: rotate(15deg);
+  transform: translate(-50%, -48%) rotate(15deg);
 }
 
 .bubble span {
@@ -562,6 +571,7 @@ h1 {
   width: calc(120 * var(--scale));
   height: calc(65 * var(--scale));
   object-fit: contain;
+  z-index: 2;
 }
 
 .footer-copy {
@@ -573,6 +583,8 @@ h1 {
   font-size: calc(16 * var(--scale));
   font-weight: 500;
   line-height: 1.2;
+  overflow: visible;
+  z-index: 2;
 }
 
 .footer-nav {
@@ -584,6 +596,7 @@ h1 {
   color: var(--white);
   font-size: calc(16 * var(--scale));
   line-height: 1.2;
+  z-index: 2;
 }
 
 .footer-nav * {
@@ -788,6 +801,7 @@ h1 {
     left: 46px;
     top: 82px;
     width: calc(100% - 92px);
+    height: 190px;
     font-size: clamp(36px, 10vw, 48px);
     line-height: 1.02;
   }
@@ -875,6 +889,11 @@ h1 {
   .bubble,
   .butterflies {
     z-index: 3;
+  }
+
+  .bubble::before {
+    width: 42px;
+    height: 36px;
   }
 
   .work {
