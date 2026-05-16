@@ -1,5 +1,10 @@
-const revealItems = document.querySelectorAll(".reveal");
+// Force scroll to top on reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
 
+const revealItems = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -102,18 +107,118 @@ if (heroSection && heroCard) {
     
     heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     
-    // Move the sparks for parallax depth
+    // Move the sparks for parallax depth using CSS vars
     if (sparkOne) {
-      sparkOne.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px)`;
+      sparkOne.style.setProperty('--mouse-x', `${x * 0.05}px`);
+      sparkOne.style.setProperty('--mouse-y', `${y * 0.05}px`);
     }
     if (sparkTwo) {
-      sparkTwo.style.transform = `translate(${x * -0.05}px, ${y * -0.05}px) rotate(-41.23deg)`;
+      sparkTwo.style.setProperty('--mouse-x', `${x * -0.05}px`);
+      sparkTwo.style.setProperty('--mouse-y', `${y * -0.05}px`);
     }
   });
 
   heroSection.addEventListener('mouseleave', () => {
     heroCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-    if (sparkOne) sparkOne.style.transform = `translate(0px, 0px)`;
-    if (sparkTwo) sparkTwo.style.transform = `translate(0px, 0px) rotate(-41.23deg)`;
+    if (sparkOne) {
+      sparkOne.style.setProperty('--mouse-x', '0px');
+      sparkOne.style.setProperty('--mouse-y', '0px');
+    }
+    if (sparkTwo) {
+      sparkTwo.style.setProperty('--mouse-x', '0px');
+      sparkTwo.style.setProperty('--mouse-y', '0px');
+    }
   });
 }
+
+// Custom Cursor Logic with Trail
+const cursor = document.getElementById('custom-cursor');
+const cursorTrail = document.getElementById('cursor-trail');
+let mouseX = 0, mouseY = 0;
+let trailX = 0, trailY = 0;
+
+if (cursor && cursorTrail) {
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+
+  function animateTrail() {
+    trailX += (mouseX - trailX) * 0.2;
+    trailY += (mouseY - trailY) * 0.2;
+    cursorTrail.style.left = trailX + 'px';
+    cursorTrail.style.top = trailY + 'px';
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
+
+  const hoverElements = document.querySelectorAll('a, button, .hero-button, .upload-button, .work');
+  hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+      cursorTrail.classList.add('hidden'); // Optional: hide trail on hover
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+      cursorTrail.classList.remove('hidden');
+    });
+  });
+}
+
+// Parallax Scroll Value
+window.addEventListener('scroll', () => {
+  document.body.style.setProperty('--scroll', window.pageYOffset);
+});
+
+
+// Text Animation Logic
+function splitTextIntoSpans(element) {
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+  const textNodes = [];
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue.trim() !== '') {
+      textNodes.push(node);
+    }
+  }
+
+  let wordIndex = 0;
+  textNodes.forEach(textNode => {
+    const text = textNode.nodeValue;
+    const words = text.split(/(\s+)/);
+    const fragment = document.createDocumentFragment();
+    
+    words.forEach(word => {
+      if (word.trim() !== '') {
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = word;
+        span.style.animationDelay = `${wordIndex * 0.05}s`;
+        fragment.appendChild(span);
+        wordIndex++;
+      } else {
+        fragment.appendChild(document.createTextNode(word));
+      }
+    });
+    textNode.parentNode.replaceChild(fragment, textNode);
+  });
+}
+
+const textObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("start-jump");
+        textObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+);
+
+document.querySelectorAll('.animate-text').forEach(el => {
+  splitTextIntoSpans(el);
+  textObserver.observe(el);
+});
