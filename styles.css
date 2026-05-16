@@ -698,6 +698,10 @@ h1 {
     background: var(--white);
   }
 
+  .loader {
+    display: none !important;
+  }
+
   .reveal {
     opacity: 1;
     filter: none;

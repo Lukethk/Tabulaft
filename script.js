@@ -84,6 +84,11 @@ window.addEventListener('load', () => {
   const titleEl = document.querySelector('.loader-title');
   
   if (loader && percentEl && titleEl) {
+    if (window.innerWidth <= 820) {
+      loader.remove();
+      return;
+    }
+
     let progress = 0;
     // 100 steps over ~1.5 seconds (15ms per step)
     const interval = setInterval(() => {
