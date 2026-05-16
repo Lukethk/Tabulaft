@@ -80,12 +80,29 @@ if (activeLink) {
 // Loader animation
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
-  if (loader) {
-    loader.classList.add('hidden');
-    // Remove loader from DOM after transition
-    setTimeout(() => {
-      loader.remove();
-    }, 500);
+  const percentEl = document.getElementById('loader-percent');
+  const titleEl = document.querySelector('.loader-title');
+  
+  if (loader && percentEl && titleEl) {
+    let progress = 0;
+    // 100 steps over ~1.5 seconds (15ms per step)
+    const interval = setInterval(() => {
+      progress += 1;
+      percentEl.textContent = progress;
+      titleEl.style.setProperty('--progress', `${progress}%`);
+      
+      if (progress >= 100) {
+        clearInterval(interval);
+        // Pause briefly at 100% before sliding the curtain
+        setTimeout(() => {
+          loader.classList.add('hidden');
+          // Wait for the slide up transition to finish before removing
+          setTimeout(() => {
+            loader.remove();
+          }, 1000);
+        }, 300);
+      }
+    }, 15);
   }
 });
 
@@ -195,7 +212,7 @@ function splitTextIntoSpans(element) {
         const span = document.createElement('span');
         span.className = 'word';
         span.textContent = word;
-        span.style.animationDelay = `${wordIndex * 0.05}s`;
+        span.style.animationDelay = `${wordIndex * 0.1}s`;
         fragment.appendChild(span);
         wordIndex++;
       } else {

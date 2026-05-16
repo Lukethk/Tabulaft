@@ -19,28 +19,61 @@ html {
   inset: 0;
   background: var(--blue);
   z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.5s ease;
+  display: grid;
+  place-items: center;
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
 }
 
 .loader.hidden {
-  opacity: 0;
+  transform: translateY(-100%);
   pointer-events: none;
 }
 
-.spinner {
-  width: calc(50 * var(--scale));
-  height: calc(50 * var(--scale));
-  border: calc(5 * var(--scale)) solid var(--white);
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.loader-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.loader.hidden .loader-content {
+  opacity: 0;
+}
+
+.loader-title {
+  font-size: calc(100 * var(--scale));
+  font-weight: 900;
+  letter-spacing: calc(10 * var(--scale));
+  padding-left: calc(10 * var(--scale)); /* Balances letter-spacing to center bounding box */
+  margin: 0;
+  text-align: center;
+  
+  /* Stroke and Fill Effect */
+  color: transparent;
+  -webkit-text-stroke: calc(2 * var(--scale)) rgba(255, 255, 255, 0.2);
+  background-image: linear-gradient(to right, var(--white) var(--progress, 0%), transparent var(--progress, 0%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+}
+
+.loader-counter {
+  position: absolute;
+  top: 100%;
+  margin-top: calc(20 * var(--scale));
+  font-size: calc(24 * var(--scale));
+  font-weight: 500;
+  letter-spacing: calc(4 * var(--scale));
+  padding-left: calc(4 * var(--scale)); /* Balances letter-spacing */
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
 }
 
 body {
